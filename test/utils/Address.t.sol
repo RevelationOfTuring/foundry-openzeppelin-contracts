@@ -3,7 +3,6 @@ pragma solidity ^0.8.0;
 
 import "openzeppelin-contracts/contracts/utils/Address.sol";
 import "forge-std/Test.sol";
-import "forge-std/console2.sol";
 import "../../src/utils/MockAddress.sol";
 
 contract AddressTest is Test {
