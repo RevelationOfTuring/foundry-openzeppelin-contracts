@@ -25,7 +25,7 @@ contract StorageSlotTest is Test {
 
         // check the slot value by the slot number
         bytes32 slotNumber = testing._BOOLEAN_SLOT();
-        bool valueInSlot = vm.load(address(testing), slotNumber) == bytes32(uint(1)) ? true : false;
+        bool valueInSlot = vm.load(address(testing), slotNumber) == bytes32(0) ? false : true;
         assertEq(testing.getBooleanSlot(), valueInSlot);
     }
 
