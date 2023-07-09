@@ -65,9 +65,18 @@ contract StringsTest is Test {
     }
 
     function test_ToHexString_FromAddress() external {
-        assertEq(testing.toHexString(address(0)), "0x0000000000000000000000000000000000000000");
+        assertEq(testing.toHexString(
+                address(0)),
+            "0x0000000000000000000000000000000000000000"
+        );
         // not checksummed
-        assertEq(testing.toHexString(address(0xFFfFfFffFFfffFFfFFfFFFFFffFFFffffFfFFFfF)), "0xffffffffffffffffffffffffffffffffffffffff");
-        assertEq(testing.toHexString(address(2 ** 160 - 1)), "0xffffffffffffffffffffffffffffffffffffffff");
+        assertEq(testing.toHexString(
+                address(0xFFfFfFffFFfffFFfFFfFFFFFffFFFffffFfFFFfF)),
+            "0xffffffffffffffffffffffffffffffffffffffff"
+        );
+        assertEq(
+            testing.toHexString(address(2 ** 160 - 1)),
+            "0xffffffffffffffffffffffffffffffffffffffff"
+        );
     }
 }
