@@ -27,7 +27,7 @@ contract MockCreate2 {
     receive() external payable {}
 }
 
-contract ContractWithConstructor{
+contract ContractWithConstructor {
     string public _name;
     uint public _age;
     constructor(string memory name, uint age){
@@ -36,7 +36,7 @@ contract ContractWithConstructor{
     }
 }
 
-contract ContractWithPayableConstructor{
+contract ContractWithPayableConstructor {
     string public _name;
     uint public _age;
     constructor(string memory name, uint age) payable {
@@ -44,4 +44,3 @@ contract ContractWithPayableConstructor{
         _age = age;
     }
 }
-
