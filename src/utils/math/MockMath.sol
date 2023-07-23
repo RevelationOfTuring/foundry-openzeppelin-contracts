@@ -42,7 +42,6 @@ contract MockMath {
         return value.log2();
     }
 
-
     function log2(uint value, Math.Rounding rounding) external pure returns (uint) {
         return value.log2(rounding);
     }
