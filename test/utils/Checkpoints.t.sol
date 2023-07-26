@@ -112,7 +112,7 @@ contract CheckpointsTest is Test {
         mch.getAtBlock(25);
 
         vm.roll(25 + 1);
-        for (uint i = 1; i < 7; ++i) {
+        for (uint i = 0; i < 7; ++i) {
             assertEq(mch.getAtBlock(blockNumbers[i]), values[i]);
         }
 
@@ -120,7 +120,7 @@ contract CheckpointsTest is Test {
         // revert if the target block number not < the current block number of chain
         vm.expectRevert("Checkpoints: block not yet mined");
         mch.getAtProbablyRecentBlock(26);
-        for (uint i = 1; i < 7; ++i) {
+        for (uint i = 0; i < 7; ++i) {
             assertEq(mch.getAtProbablyRecentBlock(blockNumbers[i]), values[i]);
         }
     }
