@@ -243,5 +243,4 @@ contract MathTest is Test {
         assertEq(mm.log256(1 << 8 * 3 + 1, Math.Rounding.Up), 4);
         assertEq(mm.log256(type(uint).max, Math.Rounding.Up), 32);
     }
-
 }
