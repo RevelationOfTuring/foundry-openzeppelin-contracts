@@ -51,7 +51,7 @@ contract ERC165Test is Test {
         uint endGas = gasleft();
         assertLt(startGas - endGas, 30000);
 
-        // type(ICustomizedInterface).interfaceId
+        // for type(ICustomizedInterface).interfaceId
         startGas = gasleft();
         me.supportsInterface(type(ICustomizedInterface).interfaceId);
         endGas = gasleft();
