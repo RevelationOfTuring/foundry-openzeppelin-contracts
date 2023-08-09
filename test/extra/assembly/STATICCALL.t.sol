@@ -148,7 +148,7 @@ contract STATICCALLTest is Test {
         bytes32 fifthWordOfOutPtr;
         assembly{
             outPtr := mload(0x40)  // free memory pointer
-        // outsize为5个字，即32*4=128个字节（即0x80）
+        // outsize为4个字，即32*4=128个字节（即0x80）
             success := staticcall(100000, targetAddr, add(encodedParams, 0x20), mload(encodedParams), outPtr, outSize)
             returnSize := returndatasize()
         // outPtr开始，第一个字为动态数组真实数据的偏移值
