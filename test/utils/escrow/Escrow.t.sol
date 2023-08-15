@@ -16,7 +16,7 @@ contract EscrowTest is Test {
     function setUp() external {
         // change balance of the owner
         vm.deal(address(this), 10 ether);
-        // chang balance of other
+        // change balance of other
         vm.deal(other, 10 ether);
     }
 
