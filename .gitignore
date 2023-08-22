@@ -12,3 +12,4 @@ build-info/
 docs/
 
 .*
+node_modules/

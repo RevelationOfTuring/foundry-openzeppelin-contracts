@@ -1,0 +1,26 @@
+{
+  "name": "foundry-openzeppelin-contracts",
+  "version": "1.0.0",
+  "description": "foundry tests for Openzeppelin v4.8.3",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RevelationOfTuring/foundry-openzeppelin-contracts.git"
+  },
+  "author": "Michael.W",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RevelationOfTuring/foundry-openzeppelin-contracts/issues"
+  },
+  "homepage": "https://github.com/RevelationOfTuring/foundry-openzeppelin-contracts#readme",
+  "devDependencies": {
+    "ethers": "^6.7.1"
+  }
+}

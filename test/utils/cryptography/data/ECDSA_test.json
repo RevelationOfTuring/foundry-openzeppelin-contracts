@@ -1,0 +1,9 @@
+{
+  "eth_signed_msg_hash_from_hash": "0x25febbb31b61fe9409b583585d6b92f3c6d7295f67caa0ce38b1a8d38301a050",
+  "eth_signed_msg_hash_from_bytes": "0xad8e48572ccf5ed2b44626c5b0b85fed892a74f01733e99d78547e2c97ca58d1",
+  "struct_hash": "0x40b6c700c838a72e280a40a06173f281398075b19eb81be5bb70ea082678e068",
+  "typed_data_hash": "0xd80f2ac8f2ab8d450d206659f81962083e8ea371c659673bcd7fc252045bb584",
+  "valid_signature": "0x5af28e79b62432ba7f2a6e53e2abf5b9f862071905cffb51a8ec80c28ff13ddd13bd5ceb1e34c91f0ebc80516af2021dd8dbd1e5aa64a6283bec182eb746c4651c",
+  "compact_signature_r": "0x5af28e79b62432ba7f2a6e53e2abf5b9f862071905cffb51a8ec80c28ff13ddd",
+  "compact_signature_vs": "0x93bd5ceb1e34c91f0ebc80516af2021dd8dbd1e5aa64a6283bec182eb746c465"
+}
