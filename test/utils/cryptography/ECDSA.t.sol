@@ -51,7 +51,7 @@ contract ECDSATest is Test {
         assertEq(signerAddress, signerRecovered);
         assertTrue(error == ECDSA.RecoverError.NoError);
 
-        //  case 2: return InvalidSignatureS error with an s value > secp256k1n/2
+        // case 2: return InvalidSignatureS error with an s value > secp256k1n/2
         bytes32 sInvalid = bytes32(type(uint).max);
         (signerRecovered, error) = me.tryRecover(ethSignedMessageHash, v, r, sInvalid);
         assertEq(address(0), signerRecovered);
@@ -75,7 +75,7 @@ contract ECDSATest is Test {
         address signerRecovered = me.recover(ethSignedMessageHash, v, r, s);
         assertEq(signerAddress, signerRecovered);
 
-        //  case 2: revert with an s value > secp256k1n/2
+        // case 2: revert with an s value > secp256k1n/2
         bytes32 sInvalid = bytes32(type(uint).max);
         vm.expectRevert("ECDSA: invalid signature 's' value");
         me.recover(ethSignedMessageHash, v, r, sInvalid);
@@ -141,7 +141,6 @@ contract ECDSATest is Test {
         vm.expectRevert("ECDSA: invalid signature");
         me.recover(digestHash, invalidSig);
 
-
         // case 5: return an arbitrary signer and no RecoverError for another hash digest
         signerRecovered = me.recover(me.toEthSignedMessageHash(bytes("Michael.W/Michael.W")), validSig);
         assertNotEq(signerAddress, signerRecovered);
@@ -156,7 +155,7 @@ contract ECDSATest is Test {
         assertEq(signerAddress, signerRecovered);
         assertTrue(error == ECDSA.RecoverError.NoError);
 
-        //  case 2: return InvalidSignatureS error with an s value > secp256k1n/2
+        // case 2: return InvalidSignatureS error with an s value > secp256k1n/2
         bytes32 vsInvalid = bytes32(type(uint).max);
         (signerRecovered, error) = me.tryRecover(ethSignedMessageHash, r, vsInvalid);
         assertEq(address(0), signerRecovered);
@@ -181,7 +180,7 @@ contract ECDSATest is Test {
         address signerRecovered = me.recover(ethSignedMessageHash, r, vs);
         assertEq(signerAddress, signerRecovered);
 
-        //  case 2: revert with an s value > secp256k1n/2
+        // case 2: revert with an s value > secp256k1n/2
         bytes32 vsInvalid = bytes32(type(uint).max);
         vm.expectRevert("ECDSA: invalid signature 's' value");
         me.recover(ethSignedMessageHash, r, vsInvalid);
