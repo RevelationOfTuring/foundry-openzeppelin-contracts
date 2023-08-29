@@ -1,0 +1,11 @@
+{
+  "domain_separator": "0x7d48bb24ae1499035f36f6aeb8448d95a20c51153590a5c38d43fd3fa7d6e9ea",
+  "domain_separator_with_chain_id_changed": "0x46316567b0d26c1fb678f600e84fe61a1f2770de96cc804cb0e186ff6826c69d",
+  "value": {
+    "name": "Michael.W",
+    "salary": 1024,
+    "personalAddress": "0x0000000000000000000000000000000000000400"
+  },
+  "signature": "0x7ac5cf994d3e835c0dfef248ab7718500314cdfb17f85bb87b2d3a469c781dd93eeae08d8af864e22a14329f5566fe23f90d13139fc1f5619529f0efa3b21fb61c",
+  "signer_address": "0x4eeAF03A8EBD4596Fd3FBe1CcEEcB44bD9B3aBa9"
+}
