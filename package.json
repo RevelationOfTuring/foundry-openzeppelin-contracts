@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/RevelationOfTuring/foundry-openzeppelin-contracts#readme",
   "devDependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.5",
     "ethers": "^6.7.1"
   }
 }
