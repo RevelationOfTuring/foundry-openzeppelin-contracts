@@ -87,7 +87,7 @@ contract AccessControlTest is Test {
         _testing.grantRole(ROLE_DEFAULT, account);
         _testing.revokeRole(ROLE_DEFAULT, account);
 
-        // no emit event if grant again
+        // no emit event if revoke again
         vm.expectEmit(true, true, true, false, address(_testing));
         emit RoleRevoked(ROLE_DEFAULT, account, address(this));
         _testing.revokeRole(ROLE_DEFAULT, account);
