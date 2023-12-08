@@ -11,7 +11,7 @@ contract ERC20CappedTest is Test {
     function test_Constructor() external {
         assertEq(_testing.cap(), 100);
 
-        // revert with o cap in constructor
+        // revert with 0 cap in constructor
         vm.expectRevert("ERC20Capped: cap is 0");
         new MockERC20Capped("test name", "test symbol", 0);
     }
