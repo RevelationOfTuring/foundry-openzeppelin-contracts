@@ -9,12 +9,14 @@ contract ERC20BurnableTest is Test {
     address private user = address(1);
 
     function test_Constructor() external {
+        assertEq(_testing.cap(), 100);
+
+        // revert with o cap in constructor
         vm.expectRevert("ERC20Capped: cap is 0");
         new MockERC20Capped("test name", "test symbol", 0);
     }
 
     function test_Mint() external {
-        assertEq(_testing.cap(), 100);
         _testing.mint(user, 100);
         assertEq(_testing.totalSupply(), 100);
 
