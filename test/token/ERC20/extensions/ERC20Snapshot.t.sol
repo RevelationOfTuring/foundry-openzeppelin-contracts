@@ -24,7 +24,7 @@ contract ERC20SnapshotTest is Test {
     }
 
     function test_TotalSupplyAt() external {
-        // revert if snapshot id is 0`
+        // revert if snapshot id is 0
         vm.expectRevert("ERC20Snapshot: id is 0");
         _testing.totalSupplyAt(0);
 
@@ -71,7 +71,7 @@ contract ERC20SnapshotTest is Test {
     }
 
     function test_BalanceOfAt() external {
-        // revert if snapshot id is 0`
+        // revert if snapshot id is 0
         vm.expectRevert("ERC20Snapshot: id is 0");
         _testing.balanceOfAt(address(this), 0);
 
