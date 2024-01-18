@@ -11,6 +11,14 @@ contract TokenTimelockTest is Test {
     MockERC20 private _token = new MockERC20("", "");
     TokenTimelock private _testing = new TokenTimelock(_token, _beneficiary, _releaseTime);
 
+    function test_Constructor() external {
+        // revert if _releaseTime <= now
+        vm.expectRevert("TokenTimelock: release time is before current time");
+        new TokenTimelock(_token, _beneficiary, block.timestamp - 1);
+        vm.expectRevert("TokenTimelock: release time is before current time");
+        new TokenTimelock(_token, _beneficiary, block.timestamp);
+    }
+
     function test_Getter() external {
         assertEq(address(_testing.token()), address(_token));
         assertEq(_testing.beneficiary(), _beneficiary);
