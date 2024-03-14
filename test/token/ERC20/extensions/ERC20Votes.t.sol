@@ -211,7 +211,7 @@ contract ERC20VotesTest is Test {
         vm.expectRevert("ERC20Votes: invalid nonce");
         _testing.delegateBySig(delegatee, nonce, expiry, v, r, s);
 
-        // revert with expire signature
+        // revert with expired signature
         nonce++;
         (v, r, s) = _getTypedDataSignature(privateKey, delegatee, nonce, expiry);
 
