@@ -206,6 +206,18 @@ contract ERC20VotesTest is Test {
 
         _testing.delegateBySig(delegatee, nonce, expiry, v, r, s);
         assertEq(_testing.delegates(signer), delegatee);
+
+        // revert with invalid nonce
+        vm.expectRevert("ERC20Votes: invalid nonce");
+        _testing.delegateBySig(delegatee, nonce, expiry, v, r, s);
+
+        // revert with expire signature
+        nonce++;
+        (v, r, s) = _getTypedDataSignature(privateKey, delegatee, nonce, expiry);
+
+        vm.warp(expiry + 1);
+        vm.expectRevert("ERC20Votes: signature expired");
+        _testing.delegateBySig(delegatee, nonce, expiry, v, r, s);
     }
 
     function _getTypedDataSignature(
