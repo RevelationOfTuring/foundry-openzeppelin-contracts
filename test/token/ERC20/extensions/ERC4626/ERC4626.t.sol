@@ -312,7 +312,7 @@ contract ERC4626Test is Test {
         _testing.redeem(sharesToBurn, receiver, receiver);
     }
 
-    function test_AssetAndConvertToSharesAndConvertToAssets() external {
+    function test_AssetAndTotalAssetsAndConvertToSharesAndConvertToAssets() external {
         // test {asset}
         assertEq(_testing.asset(), address(_asset));
 
@@ -332,6 +332,7 @@ contract ERC4626Test is Test {
         _asset.approve(address(_testing), 50);
         _testing.deposit(50, receiver);
         assertEq(_testing.totalSupply(), 50);
+        // test {totalAssets}
         assertEq(_testing.totalAssets(), 50);
         // test {convertToShares}
         for (uint assets = 1; assets < 100; ++assets) {
