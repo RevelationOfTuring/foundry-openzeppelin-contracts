@@ -12,7 +12,6 @@ contract PaymentSplitterTest is Test {
     uint[] private _shares = [20, 30, 50];
 
     function setUp() external {
-        vm.deal(address(this), 20000);
         _testing = new PaymentSplitter{value: 10000}(_payees, _shares);
     }
 
