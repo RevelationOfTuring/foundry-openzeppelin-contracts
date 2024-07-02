@@ -214,6 +214,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         emit IERC1967.AdminChanged(currentAdmin, newAdminAddress);
 
         _testing.changeAdmin(newAdminAddress);
+        assertEq(_testing.getAdmin(), newAdminAddress);
     }
 
     function test_GetBeaconAndUpgradeBeaconToAndCall() external {
