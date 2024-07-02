@@ -151,7 +151,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         _testing.upgradeToAndCallUUPS(newImplementERC1822ProxiableAddress, data, false);
         assertEq(_testing.getImplementation(), newImplementERC1822ProxiableAddress);
 
-        // case 3: call with arguments
+        // case 2.1.3: call with arguments
         newImplementERC1822ProxiableAddress = payable(address(new ImplementERC1822Proxiable(proxiableUUID)));
         uint arg1 = 1024;
         address arg2 = address(1024);
@@ -167,7 +167,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         _testing.upgradeToAndCallUUPS(newImplementERC1822ProxiableAddress, data, false);
         assertEq(_testing.getImplementation(), newImplementERC1822ProxiableAddress);
 
-        // case 4: with forceCall and no data
+        // case 2.1.4: with forceCall and no data
         // NOTE: force call to the receive function of Implement
         newImplementERC1822ProxiableAddress = payable(address(new ImplementERC1822Proxiable(proxiableUUID)));
         vm.expectEmit(address(_testing));
@@ -177,7 +177,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         _testing.upgradeToAndCallUUPS(newImplementERC1822ProxiableAddress, '', true);
         assertEq(_testing.getImplementation(), newImplementERC1822ProxiableAddress);
 
-        // case 5: with forceCall and data
+        // case 2.1.5: with forceCall and data
         // NOTE: it will enter the fallback function of Implement with non-selector data
         newImplementERC1822ProxiableAddress = payable(address(new ImplementERC1822Proxiable(proxiableUUID)));
         data = 'unknown';
