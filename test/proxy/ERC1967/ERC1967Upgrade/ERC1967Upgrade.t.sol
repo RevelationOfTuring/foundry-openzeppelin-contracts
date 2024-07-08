@@ -42,6 +42,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         newImplementationAddress = address(new Implement());
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementationAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.InitialCallWithoutArgs();
 
         bytes memory data = abi.encodeCall(_implement.initialCallWithoutArgs, ());
@@ -59,6 +60,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         string memory arg3 = "1024";
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementationAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.InitialCallWithArgs(arg1, arg2, arg3);
 
         data = abi.encodeCall(
@@ -77,6 +79,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         newImplementationAddress = address(new Implement());
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementationAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.Receive();
 
         _testing.upgradeToAndCall(newImplementationAddress, '', true);
@@ -92,6 +95,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         data = 'unknown';
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementationAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.Fallback(data);
 
         _testing.upgradeToAndCall(newImplementationAddress, data, true);
@@ -142,6 +146,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         newImplementERC1822ProxiableAddress = payable(address(new ImplementERC1822Proxiable(proxiableUUID)));
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementERC1822ProxiableAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.InitialCallWithoutArgs();
 
         bytes memory data = abi.encodeCall(
@@ -158,6 +163,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         string memory arg3 = "1024";
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementERC1822ProxiableAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.InitialCallWithArgs(arg1, arg2, arg3);
 
         data = abi.encodeCall(
@@ -172,6 +178,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         newImplementERC1822ProxiableAddress = payable(address(new ImplementERC1822Proxiable(proxiableUUID)));
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementERC1822ProxiableAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.Receive();
 
         _testing.upgradeToAndCallUUPS(newImplementERC1822ProxiableAddress, '', true);
@@ -183,6 +190,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         data = 'unknown';
         vm.expectEmit(address(_testing));
         emit IERC1967.Upgraded(newImplementERC1822ProxiableAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.Fallback(data);
 
         _testing.upgradeToAndCallUUPS(newImplementERC1822ProxiableAddress, data, true);
@@ -232,6 +240,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         newBeaconAddress = address(new Beacon(address(_implement)));
         vm.expectEmit(address(_testing));
         emit IERC1967.BeaconUpgraded(newBeaconAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.InitialCallWithoutArgs();
 
         bytes memory data = abi.encodeCall(
@@ -248,6 +257,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         string memory arg3 = "1024";
         vm.expectEmit(address(_testing));
         emit IERC1967.BeaconUpgraded(newBeaconAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.InitialCallWithArgs(arg1, arg2, arg3);
 
         data = abi.encodeCall(
@@ -262,6 +272,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         newBeaconAddress = address(new Beacon(address(_implement)));
         vm.expectEmit(address(_testing));
         emit IERC1967.BeaconUpgraded(newBeaconAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.Receive();
 
         _testing.upgradeBeaconToAndCall(newBeaconAddress, '', true);
@@ -273,6 +284,7 @@ contract ERC1967UpgradeTest is Test, IERC1967, IImplement {
         data = 'unknown';
         vm.expectEmit(address(_testing));
         emit IERC1967.BeaconUpgraded(newBeaconAddress);
+        vm.expectEmit(address(_testing));
         emit IImplement.Fallback(data);
 
         _testing.upgradeBeaconToAndCall(newBeaconAddress, data, true);
