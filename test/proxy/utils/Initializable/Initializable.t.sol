@@ -244,21 +244,12 @@ contract InitializableTest is Test, IMockInitializable, IImplementation, IModule
         assertEq(testing.counter(), 8 + 3);
         assertEq(testing.getInitializedVersion(), version);
         assertFalse(testing.isInitializing());
+    }
 
-        // case 9: disable initializers
-        // case 9.1: disable after initializer
-        vm.expectEmit(address(testing));
-        emit Initialized(type(uint8).max);
-
-        testing.disableInitializers();
-        assertEq(testing.getInitializedVersion(), type(uint8).max);
-        assertFalse(testing.isInitializing());
-        // can't reinitialize again
-        vm.expectRevert("Initializable: contract is already initialized");
-        testing.doWithReinitializer(type(uint8).max);
-
-        // case 9.2: disable before initializer
-        testing = new MockInitializable(ConstructorLogic.NO_LOGIC);
+    function test_DisableInitializers() external {
+        // case 1: disable initializers
+        // case 1.1: disable before initializer
+        MockInitializable testing = new MockInitializable(ConstructorLogic.NO_LOGIC);
         vm.expectEmit(address(testing));
         emit Initialized(type(uint8).max);
 
@@ -271,12 +262,24 @@ contract InitializableTest is Test, IMockInitializable, IImplementation, IModule
         vm.expectRevert("Initializable: contract is already initialized");
         testing.doWithReinitializer(type(uint8).max);
 
-        // case 10: revert if call _disableInitializers in initializer
+        // case 1.2: disable after initializer
+        testing = new MockInitializable(ConstructorLogic.DO_WITH_SINGLE_INITIALIZER);
+        vm.expectEmit(address(testing));
+        emit Initialized(type(uint8).max);
+
+        testing.disableInitializers();
+        assertEq(testing.getInitializedVersion(), type(uint8).max);
+        assertFalse(testing.isInitializing());
+        // can't reinitialize again
+        vm.expectRevert("Initializable: contract is already initialized");
+        testing.doWithReinitializer(type(uint8).max);
+
+        // case 2: revert if call _disableInitializers in initializer
         testing = new MockInitializable(ConstructorLogic.NO_LOGIC);
         vm.expectRevert("Initializable: contract is initializing");
         testing.disableInitializersInInitializer();
 
-        // case 11: revert if call _disableInitializers in initializer
+        // case 3: revert if call _disableInitializers in reinitializer
         testing = new MockInitializable(ConstructorLogic.DO_WITH_SINGLE_INITIALIZER);
         vm.expectRevert("Initializable: contract is initializing");
         testing.disableInitializersInReinitializer(1 + 1);
