@@ -300,6 +300,7 @@ contract InitializableTest is Test, IMockInitializable, IImplementation, IModule
             )
         )));
         // check the initialized result of proxy
+        assertEq(MockERC1967Proxy(proxyAddress).getImplementation(), address(currentImplementation));
         assertEq(Implementation(proxyAddress).i(), i);
         // call proxy
         i = 2048;
@@ -329,6 +330,7 @@ contract InitializableTest is Test, IMockInitializable, IImplementation, IModule
             )
         );
         // check the reinitialized result of proxy
+        assertEq(MockERC1967Proxy(proxyAddress).getImplementation(), address(newImplementation));
         assertEq(ImplementationToUpgrade(proxyAddress).i(), i);
         assertEq(ImplementationToUpgrade(proxyAddress).addr(), addr);
         // call proxy with old and new functions

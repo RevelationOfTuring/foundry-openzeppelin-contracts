@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import "openzeppelin-contracts/contracts/proxy/utils/Initializable.sol";
 
+// the implementation before upgrade
 interface IImplementation {
     event InitializeStorageUint(uint);
 }
@@ -22,6 +23,7 @@ contract Implementation is Initializable, IImplementation {
     }
 }
 
+// supplement in the new implementation
 interface IModuleAdded {
     event InitializeStorageAddress(address);
 }
@@ -41,6 +43,7 @@ contract ModuleAdded is Initializable, IModuleAdded {
     }
 }
 
+// new implementation to upgrade to
 contract ImplementationToUpgrade is Implementation, ModuleAdded {
     function reinitialize(uint newI, address newAddr, uint8 version) external reinitializer(version) {
         __ModuleAdded_initialize(newAddr);
