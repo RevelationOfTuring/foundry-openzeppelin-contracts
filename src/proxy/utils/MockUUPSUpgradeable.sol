@@ -46,10 +46,8 @@ contract MockUUPSUpgradeableWithWrongProxiableUUID is MockUUPSUpgradeable {
     }
 }
 
-contract MockUUPSUpgradeableWithRollbackTest is UUPSUpgradeable, Implementation {
+contract MockUUPSUpgradeableWithRollbackTest is MockUUPSUpgradeable {
     bytes32 private constant _ROLLBACK_SLOT = bytes32(uint(keccak256("eip1967.proxy.rollback")) - 1);
-
-    function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
 
     function upgradeTo(address newImplementation) external override onlyProxy {
         _authorizeUpgrade(newImplementation);
@@ -65,10 +63,11 @@ contract MockUUPSUpgradeableWithRollbackTest is UUPSUpgradeable, Implementation 
         _upgradeToAndCallUUPSWithRollbackTest(
             newImplementation,
             data,
-            false
+            true
         );
     }
 
+    // do rollback test both in {upgradeTo} and {upgradeToAndCall}
     function _upgradeToAndCallUUPSWithRollbackTest(
         address newImplementation,
         bytes memory data,
