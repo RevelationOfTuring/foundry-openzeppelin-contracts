@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../../../../src/proxy/utils/MockUUPSUpgradeable.sol";
+import "../../../src/proxy/utils/MockUUPSUpgradeable.sol";
 
 import "openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
