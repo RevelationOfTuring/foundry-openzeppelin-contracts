@@ -14,6 +14,10 @@ contract UpgradeableBeaconTest is Test, IERC1967, IImplementation {
 
     function test_Constructor() external {
         assertEq(_testing.owner(), address(this));
+
+        // revert if the implementation address is an EOA
+        vm.expectRevert("UpgradeableBeacon: implementation is not a contract");
+        new UpgradeableBeacon(address(1024));
     }
 
     function test_UpgradeToAndImplementation() external {
@@ -67,5 +71,14 @@ contract UpgradeableBeaconTest is Test, IERC1967, IImplementation {
 
         ImplementationNew(address(beaconProxy2)).addI(i);
         assertEq(ImplementationNew(address(beaconProxy2)).i(), 2048 + i);
+
+        // revert if the caller is not owner
+        vm.prank(address(1024));
+        vm.expectRevert("Ownable: caller is not the owner");
+        _testing.upgradeTo(address(_implementationNew));
+
+        // revert if the implementation address is an EOA
+        vm.expectRevert("UpgradeableBeacon: implementation is not a contract");
+        _testing.upgradeTo(address(1024));
     }
 }
