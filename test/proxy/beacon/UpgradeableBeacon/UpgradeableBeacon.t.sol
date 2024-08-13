@@ -7,7 +7,7 @@ import "openzeppelin-contracts/contracts/proxy/beacon/UpgradeableBeacon.sol";
 import "openzeppelin-contracts/contracts/proxy/beacon/BeaconProxy.sol";
 import "openzeppelin-contracts/contracts/interfaces/IERC1967.sol";
 
-contract BeaconProxyTest is Test, IERC1967, IImplementation {
+contract UpgradeableBeaconTest is Test, IERC1967, IImplementation {
     Implementation private _implementation = new Implementation();
     UpgradeableBeacon private _testing = new UpgradeableBeacon(address(_implementation));
     ImplementationNew private _implementationNew = new ImplementationNew();
